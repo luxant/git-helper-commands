@@ -1,0 +1,101 @@
+#linux 
+alias ll='ls -l'
+alias la='ls -al'
+
+#search
+alias g.s.system='function g_s_system(){
+	_printInColor "Searching */$@...";
+	find . -name "$@"
+}; g_s_system '
+
+alias g.run_command_n_times='g_run_command_n_times '
+
+#########################
+# The command line help #
+#########################
+function g_display_help {
+	echo
+	_printInColor "Script run N times a command"
+	echo
+	echo "Usage: g_run_command_n_times [cmd] [n]"
+	echo
+	echo "    cmd: Command"
+	echo "    n:   Number of times to execute the command"
+	echo
+	echo "Example 1: g_run_command_n_times 'echo something' 3"
+	echo
+	echo "Example 2: g_run_command_n_times 'ls -la' 3"
+	echo
+
+	return 0;
+}
+
+#######################
+# Run command N times #
+#######################
+function g_run_command_n_times {
+
+	# Validate the cli arguments received
+	if [ $# -gt 0 ]; then
+		if [ "$1" == "" ] || [ "$2" == "" ]; then
+			_printInColor "Error: Missed argument(s)" red
+
+			g_display_help
+
+			return 0
+		fi
+	else
+		_printInColor "Error: You must input the arguments" red
+
+		g_display_help
+
+		return 0
+	fi
+
+	echo
+	_printInColor "Running command: '$1' $2 times"
+	echo
+
+	for ((i=1; i<=$2; i++))
+	do
+		_printInColor "Run # ${i}"
+		$1
+		echo
+	done
+
+	_printInColor "Finished. Command run ${2} times" green
+	echo
+}
+
+function g_set_default_value() {
+	# If the default doesn't exist yet
+	if [[ -z $(grep "^$1=" $G_DEFAULTS_SCRIPTS_FILE) ]]
+	then
+		_printInColor "Defaulting: $1=$2"
+
+		echo "$1=$2" >> $G_DEFAULTS_SCRIPTS_FILE
+
+	# If the default doesn't exist yet
+	else
+
+		local scaped=$(echo $2 | sed 's/\//\\\//g')
+
+		# replace the whole line with the proper value pair
+		sed -i -E "s/^$1.*/$1=$scaped/g" $G_DEFAULTS_SCRIPTS_FILE
+	fi
+}
+
+function g_get_default_value() {
+
+	local default_value=$(grep "^$1=" $G_DEFAULTS_SCRIPTS_FILE)
+
+	# If the default doesn't exist yet
+	if [[ ! -z $default_value ]]
+	then
+	# If the default doesn't exist yet split by =
+		echo "$(echo $default_value | cut -d'=' -f2)"
+	fi
+}
+
+
+alias g.default.go='g_set_default_value go '
