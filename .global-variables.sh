@@ -9,7 +9,7 @@ G_HELPERS_VERSION='1.0.0'
 G_HELPERS_ENTRY_SCRIPT="$HOME/.bash_profile"
 
 # where tasks and other files can be created
-G_HELPERS_FILES_BASE_DIR="$HOME/.git-helper-commands-files/"
+G_HELPERS_FILES_BASE_DIR="$HOME/.git-helper-commands-files"
 
 # base dir of the project
 G_HELPERS_SOURCE_DIR=$(dirname -- ${BASH_ARGV[0]})

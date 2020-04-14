@@ -16,7 +16,7 @@ function g_get_release() {
 
 	echo ''
 
-	_printInColor "You got a new version $G_HELPERS_VERSION, :)?"
+	_printInColor "You got a new version $G_HELPERS_VERSION, :)"
 
 	echo ''
 
@@ -54,14 +54,6 @@ alias g.go.default='g_go_default'
 g.get.release
 
 g.go.default
-
-# save cmds current version on the local machine
-# if [[ ! -e $HOME/.cmds_version_$G_HELPERS_VERSION ]]
-# then
-# 	touch $HOME/.cmds_version_$G_HELPERS_VERSION
-# 	get.release
-# fi
-
 
 # we call the function that sets the promt text and color
 PS1=$(set_prompt)

@@ -68,8 +68,9 @@ function g_run_command_n_times {
 }
 
 function g_set_default_value() {
-	# If the default doesn't exist yet
-	if [[ -z $(grep "^$1=" $G_DEFAULTS_SCRIPTS_FILE) ]]
+
+	# If the file or default doesn't exist yet
+	if [[ ! -f $G_DEFAULTS_SCRIPTS_FILE || -z $(grep "^$1=.*" $G_DEFAULTS_SCRIPTS_FILE) ]]
 	then
 		_printInColor "Defaulting: $1=$2"
 
@@ -87,13 +88,20 @@ function g_set_default_value() {
 
 function g_get_default_value() {
 
-	local default_value=$(grep "^$1=" $G_DEFAULTS_SCRIPTS_FILE)
+	local key_value=
+
+	if [[ -f $G_DEFAULTS_SCRIPTS_FILE ]]
+	then
+		key_value=$(grep "^$1=" $G_DEFAULTS_SCRIPTS_FILE)
+	else
+		return 0;
+	fi
 
 	# If the default doesn't exist yet
-	if [[ ! -z $default_value ]]
+	if [[ ! -z $key_value ]]
 	then
 	# If the default doesn't exist yet split by =
-		echo "$(echo $default_value | cut -d'=' -f2)"
+		echo "$(echo $key_value | cut -d'=' -f2)"
 	fi
 }
 
