@@ -71,7 +71,7 @@ alias g.branch.delete='git branch -D '
 alias g.branch.rename='git branch -m '
 alias g.branch.prune='function _branch_prune (){
 
-	local branch=$(_get_default_branch)
+	local branch=$(g_get_default_branch)
 
 	if [[ $branch = "developer" || $branch = "stage" ||  $branch = "master" ]]
 	then
@@ -111,11 +111,11 @@ alias g.pull.raw='_pull '
 alias g.pull.rebase='_pull_rebase '
 
 alias g.push='function _push(){
-	_printInColor "Pushing to $(_get_default_branch)"
-	git push origin $(_get_default_branch)
+	_printInColor "Pushing to $(g_get_default_branch)"
+	git push origin $(g_get_default_branch)
 }; _push '
 alias g.push.force='function _push_force(){
-	local branch=$(_get_default_branch)
+	local branch=$(g_get_default_branch)
 
 	_printInColor "Pushing --force to origin/$branch" yellow
 
@@ -128,7 +128,7 @@ alias g.reset.soft='git reset --soft '
 alias g.reset.hard='git reset --hard '
 alias g.reset.remote='function _reset_remote(){
 
-	local branch=$(_get_default_branch $1)
+	local branch=$(g_get_default_branch $1)
 
 	_printInColor "Fetching $G_GIT_REMOTE_NAME/$branch"
 
@@ -284,7 +284,7 @@ function _cherry_pick() {
 
 function _pull(){
 
-	local branch=$(_get_default_branch $1)
+	local branch=$(g_get_default_branch $1)
 
 	_printInColor "Fetching $G_GIT_REMOTE_NAME"
 
@@ -321,7 +321,7 @@ function _pull(){
 
 function _pull_rebase (){
 
-	local branch=$(_get_default_branch $1)
+	local branch=$(g_get_default_branch $1)
 
 	_printInColor "Fetching $G_GIT_REMOTE_NAME"
 
@@ -356,8 +356,8 @@ function _pull_rebase (){
 	st
 };
 
-function _get_default_branch(){
-	local branch=$(__git_ps1 | sed 's/[() ]//g');
+function g_get_default_branch(){
+	local branch="$(git branch | grep \* | cut -d ' ' -f2)";
 
 	if [ ! -z $1 ]
 	then
