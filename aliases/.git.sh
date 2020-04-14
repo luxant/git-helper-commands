@@ -52,19 +52,6 @@ alias g.cherry-pick.range='function _cherry_pick_range(){
 }; _cherry_pick_range '
 alias g.cherry-pick.abort='git cherry-pick --abort'
 alias g.cherry-pick.continue='git cherry-pick --continue '
-alias g.cherry-pick.to.branch='function _cherry_pick_to_branch(){
-
-	_printInColor "Checking $1 environmnet"
-
-	git checkout $1
-
-	pull $1
-
-	_printInColor "Cherry picking $2"
-
-	git cherry-pick $2
-
-}; _cherry_pick_to_branch '
 
 alias g.branch='git branch '
 alias g.branch.delete='git branch -D '
@@ -90,11 +77,9 @@ alias g.branch.prune='function _branch_prune (){
 alias g.branch.create='function _branch_create (){
 	_printInColor "Checking out branch $1 from $G_GIT_REMOTE_NAME"
 
-	fetch
+	g.fetch
 
 	git checkout -b $1 $G_GIT_REMOTE_NAME/$1
-
-	pull
 
 }; _branch_create '
 
@@ -132,13 +117,11 @@ alias g.reset.remote='function _reset_remote(){
 
 	_printInColor "Fetching $G_GIT_REMOTE_NAME/$branch"
 
-	fetch $branch
+	g.fetch $branch
 
 	_printInColor "Reseting branch to $G_GIT_REMOTE_NAME/$branch HEAD" yellow
 
 	git reset --hard $G_GIT_REMOTE_NAME/$branch
-
-	pull $branch
 
 }; _reset_remote '
 
