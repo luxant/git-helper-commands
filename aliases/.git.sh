@@ -83,7 +83,7 @@ alias g.branch.create='function _branch_create (){
 
 }; _branch_create '
 
-alias g.stash='git stash list '
+alias g.stash='git stash '
 alias g.stash.save='git stash save '
 alias g.stash.pop='git stash pop '
 alias g.stash.drop='git stash drop '
@@ -92,7 +92,7 @@ alias g.merge.abort='git merge --abort '
 alias g.merge.resolve.theirs='git merge -X theirs '
 
 alias g.pull='_pull_rebase '
-alias g.pull.raw='_pull '
+alias g.pull.raw='g_pull '
 alias g.pull.rebase='_pull_rebase '
 
 alias g.push='function _push(){
@@ -261,11 +261,11 @@ function _cherry_pick() {
 		_printInColor  "cherry-pick failed!!! :(" red
 		echo
 
-		st
+		g.st
 	fi
 }
 
-function _pull(){
+function g_pull(){
 
 	local branch=$(g_get_default_branch $1)
 
@@ -299,7 +299,7 @@ function _pull(){
 
 	_printInColor "Showing status"
 
-	st
+	g.st
 };
 
 function _pull_rebase (){
@@ -336,7 +336,7 @@ function _pull_rebase (){
 
 	_printInColor "Showing status"
 
-	st
+	g.st
 };
 
 function g_get_default_branch(){
