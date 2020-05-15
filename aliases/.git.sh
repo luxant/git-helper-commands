@@ -87,6 +87,7 @@ alias g.stash='git stash '
 alias g.stash.save='git stash save '
 alias g.stash.pop='git stash pop '
 alias g.stash.drop='git stash drop '
+alias g.stash.apply='git stash apply '
 
 alias g.merge.abort='git merge --abort '
 alias g.merge.resolve.theirs='git merge -X theirs '
@@ -107,6 +108,8 @@ alias g.push.force='function _push_force(){
 	git push --force origin $branch
 }; _push_force '
 
+alias g.rebase.abort='git rebase --abort'
+alias g.rebase.continue='git rebase --continue'
 
 alias g.reset='git reset '
 alias g.reset.soft='git reset --soft '
