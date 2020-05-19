@@ -74,14 +74,6 @@ alias g.branch.prune='function _branch_prune (){
 		echo "$branches_to_delete" | xargs git branch -D
 	fi
 }; _branch_prune '
-alias g.branch.create='function _branch_create (){
-	_printInColor "Checking out branch $1 from $G_GIT_REMOTE_NAME"
-
-	g.fetch
-
-	git checkout -b $1 $G_GIT_REMOTE_NAME/$1
-
-}; _branch_create '
 
 alias g.stash='git stash '
 alias g.stash.save='git stash save '
