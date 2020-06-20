@@ -10,6 +10,10 @@ function g_create_working_folders() {
 
 	mkdir -p $G_DEFAULTS_SCRIPTS_DIR
 	mkdir -p $G_TASKS_SCRIPTS_DIR
+	
+	touch -a $G_DEFAULTS_SCRIPTS_FILE # default values file creaation
+
+	_printInColor "Finished creating work files and folders\n"
 }
 
 function g_installing_helper_commands_loading() {
