@@ -18,7 +18,7 @@ function g_create_working_folders() {
 
 function g_installing_helper_commands_loading() {
 
-	local source_path="$(pwd)/helper-commands.sh"
+	local source_path="$(dirname -- ${BASH_ARGV[0]})/helper-commands.sh"
 
 	# load extending commands
 	if [[ -z $(grep "^ *source \+$current_path" $G_HELPERS_ENTRY_SCRIPT) ]]
