@@ -16,7 +16,7 @@ function g_get_release() {
 
 	echo ''
 
-	_printInColor "You got a new version $G_HELPERS_VERSION, :)"
+	_printInColor "You got a new version $G_HELPERS_VERSION :)"
 
 	echo ''
 
