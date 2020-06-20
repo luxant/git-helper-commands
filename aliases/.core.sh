@@ -28,6 +28,23 @@ function _printInColor(){
 
 };
 
+function _g_debug_print_in_color(){
+
+	if [[ ! -z $G_DEBUG ]]
+	then
+		if [[ ! -z $2 ]]
+		then
+			_setColor $2
+		else
+			_setColor cyan
+		fi
+
+		echo -e "$1";
+
+		_setColor white
+	fi
+};
+
 function _setColor(){
 	if [[ ! -z $(command -v setterm) ]]
 	then

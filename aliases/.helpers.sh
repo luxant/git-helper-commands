@@ -53,7 +53,7 @@ function g_run_command_n_times {
 	fi
 
 	echo
-	_printInColor "Running command: '$1' $2 times"
+	_g_debug_print_in_color "Running command: '$1' $2 times"
 	echo
 
 	for ((i=1; i<=$2; i++))
@@ -63,7 +63,7 @@ function g_run_command_n_times {
 		echo
 	done
 
-	_printInColor "Finished. Command run ${2} times" green
+	_g_debug_print_in_color "Finished. Command run ${2} times" green
 	echo
 }
 

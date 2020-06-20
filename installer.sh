@@ -6,7 +6,7 @@ source $(dirname -- ${BASH_ARGV[0]})/aliases/.core.sh
 
 function g_create_working_folders() {
 
-	_printInColor "Creating work folders at $G_HELPERS_FILES_BASE_DIR"
+	_printInColor "Creating work files and folders at $G_HELPERS_FILES_BASE_DIR"
 
 	mkdir -p $G_DEFAULTS_SCRIPTS_DIR
 	mkdir -p $G_TASKS_SCRIPTS_DIR
@@ -30,11 +30,16 @@ function g_installing_helper_commands_loading() {
 		echo "#load helper commands" >> $G_HELPERS_ENTRY_SCRIPT
 		echo "source $source_path" >> $G_HELPERS_ENTRY_SCRIPT
 
-		_printInColor "Loading commands..."
+		_printInColor "Finished installation\n"
 
+		# create folders and files used by the library
 		g_create_working_folders
 
+		_printInColor "Loading commands..."
+
 		source "$source_path"
+
+		_printInColor "Finished loading commands\n"
 
 		_printInColor "Install success :)" green
 	else
