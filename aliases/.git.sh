@@ -8,12 +8,12 @@ alias g.lg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset
 alias g.ck='git checkout '
 alias g.add='git add '
 alias g.co='_commit '
-alias g.co.force='function _commit_force(){
+alias g.co.anyway='function _commit_anyway(){
 	#we check if there was any invalid code
 	_printInColor "I hope you are not commiting console.logs under the hood ~(✖_✖)~" yellow
 
 	git commit -m "$@"
-}; _commit_force '
+}; _commit_anyway '
 alias g.amend.message='git commit --amend --cleanup=whitespace'
 alias g.amend.changes='git commit --amend --no-edit'
 alias g.fetch='git fetch $G_GIT_REMOTE_NAME '
