@@ -80,6 +80,7 @@ alias g.stash.save='git stash save '
 alias g.stash.pop='git stash pop '
 alias g.stash.drop='git stash drop '
 alias g.stash.apply='git stash apply '
+alias g.stash.untracked='git stash --include-untracked '
 
 alias g.merge.abort='git merge --abort '
 alias g.merge.resolve.theirs='git merge -X theirs '
