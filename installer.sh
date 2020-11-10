@@ -8,27 +8,27 @@ function g_create_working_folders() {
 
 	_printInColor "Creating work files and folders at $G_HELPERS_FILES_BASE_DIR"
 
-	mkdir -p $G_DEFAULTS_SCRIPTS_DIR
-	mkdir -p $G_TASKS_SCRIPTS_DIR
+	mkdir -p "$G_DEFAULTS_SCRIPTS_DIR"
+	mkdir -p "$G_TASKS_SCRIPTS_DIR"
 	
-	touch -a $G_DEFAULTS_SCRIPTS_FILE # default values file creaation
+	touch -a "$G_DEFAULTS_SCRIPTS_FILE" # default values file creaation
 
 	_printInColor "Finished creating work files and folders\n"
 }
 
 function g_installing_helper_commands_loading() {
 
-	local source_path="$(dirname -- ${BASH_ARGV[0]})/helper-commands.sh"
+	local source_path="$(pwd $(dirname -- ${BASH_ARGV[0]}))/helper-commands.sh"
 
 	# load extending commands
-	if [[ -z $(grep "^ *source \+$current_path" $G_HELPERS_ENTRY_SCRIPT) ]]
+	if [[ -z $(grep "^ *source \+$source_path" "$G_HELPERS_ENTRY_SCRIPT") ]] # Note: \+ means match spaces for grep
 	then
-
 		_printInColor "Installing commands..."
 
-		echo "" >> $G_HELPERS_ENTRY_SCRIPT
-		echo "#load helper commands" >> $G_HELPERS_ENTRY_SCRIPT
-		echo "source $source_path" >> $G_HELPERS_ENTRY_SCRIPT
+		# write the commands loading to the .bash_profile script
+		echo "" >> "$G_HELPERS_ENTRY_SCRIPT"
+		echo "# load helper commands" >> "$G_HELPERS_ENTRY_SCRIPT"
+		echo "source $source_path" >> "$G_HELPERS_ENTRY_SCRIPT"
 
 		_printInColor "Finished installation\n"
 

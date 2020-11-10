@@ -37,6 +37,8 @@ function g_get_release() {
 
 function g_go_default() {
 
+	_g_debug_print_in_color "@helper-commands.sh:g_go_default"
+
 	local default_directoy=$(g_get_default_value go)
 
 	if [[ ! -z $default_directoy ]]

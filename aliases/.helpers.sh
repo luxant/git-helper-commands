@@ -70,11 +70,11 @@ function g_run_command_n_times {
 function g_set_default_value() {
 
 	# If the file or default doesn't exist yet
-	if [[ ! -f $G_DEFAULTS_SCRIPTS_FILE || -z $(grep "^$1=.*" $G_DEFAULTS_SCRIPTS_FILE) ]]
+	if [[ ! -f "$G_DEFAULTS_SCRIPTS_FILE" || -z $(grep "^$1=.*" "$G_DEFAULTS_SCRIPTS_FILE") ]]
 	then
 		_printInColor "Defaulting: $1=$2"
 
-		echo "$1=$2" >> $G_DEFAULTS_SCRIPTS_FILE
+		echo "$1=$2" >> "$G_DEFAULTS_SCRIPTS_FILE"
 
 	# If the default doesn't exist yet
 	else
@@ -82,7 +82,7 @@ function g_set_default_value() {
 		local scaped=$(echo $2 | sed 's/\//\\\//g')
 
 		# replace the whole line with the proper value pair
-		sed -i -E "s/^$1.*/$1=$scaped/g" $G_DEFAULTS_SCRIPTS_FILE
+		sed -i -E "s/^$1.*/$1=$scaped/g" "$G_DEFAULTS_SCRIPTS_FILE"
 	fi
 }
 
@@ -90,15 +90,15 @@ function g_get_default_value() {
 
 	local key_value=
 
-	if [[ -f $G_DEFAULTS_SCRIPTS_FILE ]]
+	if [[ -f "$G_DEFAULTS_SCRIPTS_FILE" ]]
 	then
-		key_value=$(grep "^$1=" $G_DEFAULTS_SCRIPTS_FILE)
+		key_value=$(grep "^$1=" "$G_DEFAULTS_SCRIPTS_FILE")
 	else
 		return 0;
 	fi
 
 	# If the default doesn't exist yet
-	if [[ ! -z $key_value ]]
+	if [[ ! -z "$key_value" ]]
 	then
 	# If the default doesn't exist yet split by =
 		echo "$(echo $key_value | cut -d'=' -f2)"
