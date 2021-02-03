@@ -111,3 +111,4 @@ function g_tasks_files_completition(){
 # auto completition configuration
 complete -F g_tasks_files_completition g.task
 complete -F g_tasks_files_completition g.task.delete
+complete -F g_tasks_files_completition g.task.edit
