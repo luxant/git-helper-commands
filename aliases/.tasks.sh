@@ -1,36 +1,6 @@
 #tasks
-alias g.task='function g_task(){
 
-	if [[ -z $1 ]]
-	then
-		_printInColor "Please enter a name for the task" red
-
-		return 1
-	fi
-
-	local task_file=""
-	local custom_location="$G_TASKS_SCRIPTS_DIR/$1.sh"
-
-	if [[ -e $custom_location ]] #we check if the file exist in the user custom tasks
-	then
-		task_file=$custom_location
-	else
-		_printInColor "The task \"$1\" could not be found as:" red
-		_printInColor $custom_location red
-
-		return 1
-	fi
-
-	_printInColor "Running file $task_file for task \"$1\""
-	_printInColor ""
-
-	source $task_file
-
-	_printInColor ""
-	_printInColor "Task completed" green
-
-}; g_task '
-alias g.task.create='function g_task_create(){
+function g_task_create_edit(){
 
 	if [[ $(_is_program_installed nano) = "1" ]]
 	then
@@ -47,14 +17,48 @@ alias g.task.create='function g_task_create(){
 	fi
 
 	#if task folder dont exist in the user home, we create it
-	if [[ ! -e $G_TASKS_SCRIPTS_DIR ]]
+	if [[ ! -e "$G_TASKS_SCRIPTS_DIR" ]]
 	then
-		mkdir -p $G_TASKS_SCRIPTS_DIR
+		mkdir -p "$G_TASKS_SCRIPTS_DIR"
 	fi
 
-	nano $G_TASKS_SCRIPTS_DIR/$1.sh
+	nano "$G_TASKS_SCRIPTS_DIR/$1.sh"
+}
 
-}; g_task_create '
+alias g.task.create='g_task_create_edit '
+alias g.task.edit='g_task_create_edit '
+
+alias g.task='function g_task(){
+
+	if [[ -z $1 ]]
+	then
+		_printInColor "Please enter a name for the task" red
+
+		return 1
+	fi
+
+	local task_file=""
+	local custom_location="$G_TASKS_SCRIPTS_DIR/$1.sh"
+
+	if [[ -e "$custom_location" ]] #we check if the file exist in the user custom tasks
+	then
+		task_file="$custom_location"
+	else
+		_printInColor "The task \"$1\" could not be found as:" red
+		_printInColor "$custom_location" red
+
+		return 1
+	fi
+
+	_printInColor "Running file $task_file for task \"$1\""
+	_printInColor ""
+
+	source "$task_file"
+
+	_printInColor ""
+	_printInColor "Task completed" green
+
+}; g_task '
 alias g.task.delete='function g_task_delete(){
 
 	if [[ -z $1 ]]
@@ -64,17 +68,17 @@ alias g.task.delete='function g_task_delete(){
 		return 1
 	fi
 
-	local task_file=$G_TASKS_SCRIPTS_DIR/$1.sh
+	local task_file="$G_TASKS_SCRIPTS_DIR/$1.sh"
 
 	#we check if the task file exist
-	if [[ ! -e $task_file ]]
+	if [[ ! -e "$task_file" ]]
 	then
 		_printInColor "This task dosent seem to exist" yellow
 
 		return 1
 	fi
 
-	rm -f $task_file
+	rm -f "$task_file"
 
 	_printInColor "The task has been deleted"
 
@@ -90,9 +94,9 @@ function g_tasks_files_completition(){
 	prev="${COMP_WORDS[COMP_CWORD-1]}"
 
 	# possible task in the custom task folder
-	if [[ -e $G_TASKS_SCRIPTS_DIR/ ]]
+	if [[ -e "$G_TASKS_SCRIPTS_DIR/" ]]
 	then
-		customs_task_opts=$( find $G_TASKS_SCRIPTS_DIR/ -name "*.sh" -printf "%f " )
+		customs_task_opts=$( find "$G_TASKS_SCRIPTS_DIR"/ -name "*.sh" -printf "%f " )
 	fi
 
 	# we merge both default and custom suggestions
