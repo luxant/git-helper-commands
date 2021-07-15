@@ -39,13 +39,18 @@ function g_go_default() {
 
 	_g_debug_print_in_color "@helper-commands.sh:g_go_default"
 
-	local default_directoy=$(g_get_default_value go)
+	local default_directoy="$(g_get_default_value go)"
 
 	if [[ ! -z $default_directoy ]]
 	then
-		_printInColor "\ngoing to default location $default_directoy \r\n"
+		_printInColor "\ngoing to default location $default_directoy \r\n" cyan
 		
 		cd $default_directoy
+
+		if [ $? -ne 0 ]
+		then
+			_printInColor "\ngoing to $default_directoy didn't worked, sorry\r\n" red
+		fi
 	fi
 }
 
