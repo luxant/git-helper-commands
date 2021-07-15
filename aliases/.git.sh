@@ -206,7 +206,7 @@ function _commit(){
 		echo
 		echo "$grep_output"
 		echo
-		_printInColor "If you are sure this isn't yours (not my fault/pilatazo), do a 'co.force'"
+		_printInColor "If you are sure this isn't yours (not my fault/pilatazo), do a 'g.co.anyway'"
 	else
 		git commit -m "$@"
 	fi
