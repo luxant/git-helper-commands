@@ -13,42 +13,40 @@ function set_prompt ()
 	echo "${COLOR_BLUE}\h ${COLOR_GREEN}\W${COLOR_YELLOW}\$(__git_ps1)${COLOR_DEFAULT}\$ "
 }
 
-function _printInColor(){
-
-	if [[ ! -z $2 ]]
+function _g_map_color() {
+	if [[ $1 == "red" ]]
 	then
-		_setColor $2
+		# setterm -term linux -fore $1
+		echo "${G_COLOR_RED}"
+	elif [[ $1 == "blue" ]]
+	then
+		echo "${G_COLOR_BLUE}"
+	elif [[ $1 == "yellow" ]]
+	then
+		echo "${G_COLOR_YELLOW}"
+	elif [[ $1 == "cyan" ]]
+	then
+		echo "${G_COLOR_CYAN}"
+	elif [[ $1 == "green" ]]
+	then
+		echo "${G_COLOR_GREEN}"
 	else
-		_setColor cyan
+		echo "${G_RESET_ALL}"
 	fi
+}
 
-	echo -e "$1";
+function _printInColor() {
+	local COLOR=$(_g_map_color $2)
 
-	_setColor white
-
+	echo -e "${G_RESET_ALL}${COLOR}$1${G_RESET_ALL}";
 };
 
-function _g_debug_print_in_color(){
-
+function _g_debug_print_in_color() {
 	if [[ ! -z $G_DEBUG ]]
 	then
-		if [[ ! -z $2 ]]
-		then
-			_setColor $2
-		else
-			_setColor cyan
-		fi
+		local COLOR=$(_g_map_color $2)
 
-		echo -e "$1";
-
-		_setColor white
-	fi
-};
-
-function _setColor(){
-	if [[ ! -z $(command -v setterm) ]]
-	then
-		setterm -term linux -fore $1
+		echo -e "${G_RESET_ALL}${COLOR}$1${G_RESET_ALL}";
 	fi
 };
 

@@ -37,3 +37,15 @@ G_TASKS_SCRIPTS_DIR="$G_HELPERS_FILES_BASE_DIR/tasks"
 
 G_DEFAULTS_SCRIPTS_DIR="$G_HELPERS_FILES_BASE_DIR/default"
 G_DEFAULTS_SCRIPTS_FILE="$G_DEFAULTS_SCRIPTS_DIR/.value-pairs.txt"
+
+
+#################################
+#            COLOR              #
+#################################
+G_RESET_ALL='\e[0m'
+G_COLOR_DEFAULT='\e[39m'
+G_COLOR_BLUE='\e[34m'
+G_COLOR_GREEN='\e[32m'
+G_COLOR_YELLOW='\e[33m'
+G_COLOR_CYAN='\e[36m'
+G_COLOR_RED='\e[31m'
