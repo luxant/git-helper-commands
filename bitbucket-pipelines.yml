@@ -1,0 +1,33 @@
+# This is an example Starter pipeline configuration
+# Use a skeleton to build, test and deploy using manual and parallel steps
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: atlassian/default-image:2
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: 'Sync with github'
+          script:
+            - apt-get update -y
+            - apt-get install -y expect
+
+            - echo -e "$GITHUB_SSH_PRIVATE_KEY" > id_rsa
+            - pwd
+            - cat id_rsa
+            - chmod 400 id_rsa
+
+            - echo "$GITHUB_SSH_KEY_PASSPHRASE"
+
+            # Start ssh agent
+            - source docker/add-ssh-key.exp id_rsa "$GITHUB_SSH_KEY_PASSPHRASE"
+            
+            # # Add Github finger print to know host file
+            # - ssh-keyscan www.github.com >> ~/.ssh/known_hosts
+
+            # # Add Github as a remote
+            # - git remote add github git@github.com:luxant/git-helper-commands.git
+            # # - git remote add bitbucket git@bitbucket.org:luxancap/git-helper-commands.git
+            # # - git fetch bitbucket $BITBUCKET_BRANCH
+            # - git push --force github $BITBUCKET_BRANCH
