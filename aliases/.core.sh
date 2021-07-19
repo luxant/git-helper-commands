@@ -27,6 +27,15 @@ function _g_map_color() {
 	elif [[ $1 == "cyan" ]]
 	then
 		echo "${G_COLOR_CYAN}"
+	elif [[ $1 == "light_blue" ]]
+	then
+		echo "$G_COLOR_LIGTH_BLUE"
+	elif [[ $1 == "light_magenta" ]]
+	then
+		echo "$G_COLOR_LIGTH_MAGENTA"
+	elif [[ $1 == "white" ]]
+	then
+		echo "$G_COLOR_WHITE"
 	elif [[ $1 == "green" ]]
 	then
 		echo "${G_COLOR_GREEN}"
@@ -42,16 +51,19 @@ function _printInColor() {
 };
 
 function _g_debug_print_in_color() {
-	if [[ ! -z $G_DEBUG ]]
+	if [[ -z $G_DEBUG ]]
 	then
-		local COLOR=$(_g_map_color $2)
-
-		echo -e "${G_RESET_ALL}${COLOR}$1${G_RESET_ALL}";
+		return 0
 	fi
-};
 
-function _TEXT_ENCODE (){
-	echo $(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$1")
+	local COLOR=$(_g_map_color light_magenta)
+
+	if [[ ! -z $2 ]]
+	then
+		COLOR=$(_g_map_color $2)
+	fi
+
+	echo -e "${G_RESET_ALL}${COLOR}$1${G_RESET_ALL}";
 };
 
 function _get_current_script_dir(){
@@ -63,4 +75,16 @@ function _is_program_installed() {
 
 	# we return (output) the hash exit code
 	echo "$?"
+}
+
+function _g_get_latest_version() {
+	local regex='{[[[:space:]]+"name":[[[:space:]]+"master",[[[:space:]]+"commit":[[[:space:]]+{[[[:space:]]+"sha":[[[:space:]]+"([0-9 a-z A-Z]+)';
+
+	# get master branch current commit for the git-helper-commands repo
+	local result=$(curl -s --location --request GET 'https://api.github.com/repos/luxant/git-helper-commands/branches/master')
+
+	# evaluate request response agains the regex expresion
+	[[ "$result" =~ $regex ]]
+
+	echo "${BASH_REMATCH[1]}"
 }

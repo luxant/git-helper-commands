@@ -67,7 +67,7 @@ function g_run_command_n_times {
 	echo
 }
 
-function g_set_default_value() {
+function _g_set_default_value() {
 
 	# If the file or default doesn't exist yet
 	if [[ ! -f "$G_DEFAULTS_SCRIPTS_FILE" || -z $(grep "^$1=.*" "$G_DEFAULTS_SCRIPTS_FILE") ]]
@@ -86,7 +86,7 @@ function g_set_default_value() {
 	fi
 }
 
-function g_get_default_value() {
+function _g_get_default_value() {
 
 	local key_value=
 
@@ -106,4 +106,4 @@ function g_get_default_value() {
 }
 
 
-alias g.default.go='g_set_default_value go '
+alias g.default.go='_g_set_default_value go '
