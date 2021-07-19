@@ -27,6 +27,15 @@ function _g_map_color() {
 	elif [[ $1 == "cyan" ]]
 	then
 		echo "${G_COLOR_CYAN}"
+	elif [[ $1 == "light_blue" ]]
+	then
+		echo "$G_COLOR_LIGTH_BLUE"
+	elif [[ $1 == "light_magenta" ]]
+	then
+		echo "$G_COLOR_LIGTH_MAGENTA"
+	elif [[ $1 == "white" ]]
+	then
+		echo "$G_COLOR_WHITE"
 	elif [[ $1 == "green" ]]
 	then
 		echo "${G_COLOR_GREEN}"
@@ -42,12 +51,19 @@ function _printInColor() {
 };
 
 function _g_debug_print_in_color() {
-	if [[ ! -z $G_DEBUG ]]
+	if [[ -z $G_DEBUG ]]
 	then
-		local COLOR=$(_g_map_color $2)
-
-		echo -e "${G_RESET_ALL}${COLOR}$1${G_RESET_ALL}";
+		return 0
 	fi
+
+	local COLOR=$(_g_map_color light_magenta)
+
+	if [[ ! -z $2 ]]
+	then
+		COLOR=$(_g_map_color $2)
+	fi
+
+	echo -e "${G_RESET_ALL}${COLOR}$1${G_RESET_ALL}";
 };
 
 function _get_current_script_dir(){
