@@ -50,10 +50,6 @@ function _g_debug_print_in_color() {
 	fi
 };
 
-function _TEXT_ENCODE (){
-	echo $(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$1")
-};
-
 function _get_current_script_dir(){
 	echo ${BASH_ARGV[0]%/*}
 }
