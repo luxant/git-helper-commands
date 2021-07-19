@@ -76,3 +76,15 @@ function _is_program_installed() {
 	# we return (output) the hash exit code
 	echo "$?"
 }
+
+function _g_get_latest_version() {
+	local regex='{[[[:space:]]+"name":[[[:space:]]+"master",[[[:space:]]+"commit":[[[:space:]]+{[[[:space:]]+"sha":[[[:space:]]+"([0-9 a-z A-Z]+)';
+
+	# get master branch current commit for the git-helper-commands repo
+	local result=$(curl -s --location --request GET 'https://api.github.com/repos/luxant/git-helper-commands/branches/master')
+
+	# evaluate request response agains the regex expresion
+	[[ "$result" =~ $regex ]]
+
+	echo "${BASH_REMATCH[1]}"
+}

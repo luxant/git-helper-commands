@@ -1,5 +1,5 @@
 #********************************
-#*  LOAD DEPENDENCIES   *
+#        LOAD DEPENDENCIES      #
 #********************************
 
 # load core funcions used in may places

@@ -1,9 +1,11 @@
 #################################
 #       BASIC VARIABLES         #
 #################################
+# debug flag. Uncomment to get debug messages
+# G_DEBUG=1
 
 # variables
-G_HELPERS_VERSION='1.0.0'
+G_HELPERS_VERSION='1.1.0'
 
 # console entry point
 G_HELPERS_ENTRY_SCRIPT="$HOME/.bash_profile"
@@ -52,3 +54,8 @@ G_COLOR_RED='\e[31m'
 G_COLOR_WHITE='\e[97m'
 G_COLOR_LIGTH_BLUE='\e[94m'
 G_COLOR_LIGTH_MAGENTA='\e[95m'
+
+#################################
+#         TEXT EFFECTS          #
+#################################
+G_EFFECT_BLINK='\e[5m'
