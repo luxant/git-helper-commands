@@ -3,7 +3,7 @@
 #################################
 
 alias g.st='git status'
-alias g.st.untracked='st -u'
+alias g.st.untracked='git status -u'
 alias g.lg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative --date-order'
 alias g.ck='git checkout '
 alias g.add='git add '
@@ -38,13 +38,15 @@ alias g.revert.all='
 
 	_printInColor "abort merge..."
 
-		git merge --abort
+	git merge --abort
 
 	_printInColor "tracked files..."
-	ck .
+	
+	g.ck .
 
 	_printInColor "untracked files..."
-	revert.untrack
+	
+	g.revert.untrack
 '
 alias g.cherry-pick='_cherry_pick '
 alias g.cherry-pick.range='function _cherry_pick_range(){
@@ -133,13 +135,6 @@ alias g.s.ignore.case='function _s_ignore_case(){
 	fi
 
 }; _s_ignore_case '
-
-alias g.s.files='function _s_files(){
-	_printInColor "Searching */$@...";
-	git ls-files */$@
-}; _s_files '
-
-
 
 #################################
 #	   FUNCTIONS	        #

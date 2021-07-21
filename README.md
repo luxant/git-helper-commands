@@ -25,6 +25,10 @@ source installer.sh
 
 5. Now you should have the tool up and running. if you got a any git repo and do `g.st` you should your `git status` results
 
+## Documentation
+
+Please refer to the documentation [here](DOCUMENTATION.md)
+
 ## Release notes
 
 Please go [here](CHANGELOG.md) to see the project full release notes

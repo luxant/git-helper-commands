@@ -51,11 +51,11 @@ alias g.task='function g_task(){
 	fi
 
 	_printInColor "Running file $task_file for task \"$1\""
-	_printInColor ""
+	echo
 
 	source "$task_file"
 
-	_printInColor ""
+	echo
 	_printInColor "Task completed" green
 
 }; g_task '
