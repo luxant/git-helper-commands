@@ -1,8 +1,8 @@
-#linux 
+# linux 
 alias ll='ls -l'
 alias la='ls -al'
 
-#search
+# search
 alias g.s.system='function g_s_system(){
 	_printInColor "Searching */$@...";
 	find . -name "$@"
@@ -105,5 +105,22 @@ function _g_get_default_value() {
 	fi
 }
 
+#######################
+#  Folder navigation  #
+#######################
 
-alias g.default.go='_g_set_default_value go '
+alias g.default.go='function _g_default_go() {
+	
+	local directory="$1"
+
+	if [[ -z $1 ]]
+	then
+		directory="$(pwd)"
+		_printInColor "no path received, so defaulting to the current folder path" cyan
+	fi
+
+	_g_set_default_value go "$directory"
+
+	echo
+	_printInColor "default folder set to $directory" cyan
+}; _g_default_go'
