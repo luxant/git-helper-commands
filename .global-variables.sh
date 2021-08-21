@@ -5,7 +5,7 @@
 # G_DEBUG=1
 
 # variables
-G_HELPERS_VERSION='1.1.0'
+G_HELPERS_VERSION='1.2.0'
 
 # console entry point
 G_HELPERS_ENTRY_SCRIPT="$HOME/.bash_profile"
@@ -26,6 +26,7 @@ G_HELPERS_DOCS_RELEASE_NOTES="$G_HELPERS_SOURCE_DIR/CHANGELOG.md"
 
 # Set here the name of your remote as needed
 G_GIT_REMOTE_NAME='origin'
+G_GIT_KEY_BRANCHES='master developer develop stage main release production prod'
 
 #################################
 #       TASK VARIABLES          #

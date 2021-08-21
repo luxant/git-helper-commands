@@ -1,5 +1,8 @@
 ## RELEASE NOTES
 
+#### Version 1.2.0
+ * g.branch.prune improved
+
 #### Version 1.1.0
  * Added auto update feature
 
