@@ -56,24 +56,7 @@ alias g.cherry-pick.continue='git cherry-pick --continue '
 alias g.branch='git branch '
 alias g.branch.delete='git branch -D '
 alias g.branch.rename='git branch -m '
-alias g.branch.prune='function _branch_prune (){
-
-	local branch=$(g_get_default_branch)
-
-	if [[ $branch = "developer" || $branch = "stage" ||  $branch = "master" ]]
-	then
-		_printInColor "Prunning branches except developer, stage and master" yellow
-	else
-		_printInColor "Prunning branches except developer, stage, master and $branch" yellow
-	fi
-
-	local branches_to_delete=$(git branch | grep -Ev "\sdeveloper$|\sstage$|\smaster$|$branch")
-
-	if [[ $branches_to_delete ]]
-	then
-		echo "$branches_to_delete" | xargs git branch -D
-	fi
-}; _branch_prune '
+alias g.branch.prune='_g_branch_prune '
 
 alias g.stash='git stash '
 alias g.stash.save='git stash save '
@@ -334,6 +317,67 @@ function _pull_rebase (){
 
 	g.st
 };
+
+function _g_branch_prune (){
+    local checkmark_icon='\u2714' # \xE2\x9C\x94
+    local cross_icon='\u274c'
+
+	local current_branch=$(g_get_default_branch)
+
+    # array of branches that we shouldn't delete
+    local keep_branches=("$current_branch $G_GIT_KEY_BRANCHES")
+
+    _printInColor "${G_COLOR_GREEN}keeping branches$G_RESET_ALL: $keep_branches"
+
+    # get local branches. sed will remove the * of the current
+    # and put all branch names in a single line
+    local local_branches=($(git branch | sed -z 's/[\n|\*]/ /g'))
+
+    _printInColor "${G_COLOR_CYAN}local branches$G_RESET_ALL: ${local_branches[*]}"
+
+    echo
+
+    local kept_branches=()
+    local deleted_branches=()
+
+    for branch in ${local_branches[*]}
+    do
+        _g_debug_print_in_color "branch being evaluated: $branch"
+
+        # check if the branch is not a keep branch
+        if [[ ! " ${keep_branches[*]} " =~ " ${branch} " ]]; then
+
+            deleted_branches+=("$branch")
+
+            # whatever you want to do when array doesn't contain value
+            git branch -D "$branch"
+        else
+            kept_branches+=("$branch")
+        fi
+    done
+
+    echo 
+    _printInColor "---------------------" cyan
+    _printInColor "branch pruning result" cyan
+    _printInColor "---------------------" cyan
+    echo 
+
+    _printInColor "kept branches:" green
+    
+    for branch in ${kept_branches[*]}
+    do
+        _printInColor "- $branch"
+    done
+
+    echo 
+
+    _printInColor "deleted branches:" red
+    
+    for branch in ${deleted_branches[*]}
+    do
+        _printInColor "- $branch"
+    done
+}
 
 function g_get_default_branch(){
 	local branch="$(git branch | grep \* | cut -d ' ' -f2)";
