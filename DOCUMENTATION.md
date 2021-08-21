@@ -1,8 +1,16 @@
+## Legends
+
+★ commands that I suggest you to check out that I consider most useful in a day to day work :)
+
+✔️ what the tools suggest to use
+
+❌ *raw command* you would have to run instead
+
 # Git 👾
 
-## Most used cmds
+## Most used cmds for git
 
-✔️ **g.st**
+★✔️ **g.st**
 
 ❌ instead of *git status*
 
@@ -14,53 +22,53 @@ show the status of the repository
 
 show the status of the repository including untracked files
 
-✔️ **g.lg**
+★✔️ **g.lg**
 
 ❌ instead of *git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative --date-order*
 
 show the log of the repository
 
-✔️ **g.ck** [file_path | directory_path] ( Tab completion enabled )
+★✔️ **g.ck** [file_path | directory_path] ( Tab completion enabled )
 
 ❌ instead of *git checkout*
 
 alias for the git checkout
 
-✔️ **g.add** [file_path | directory_path] ( Tab completion enabled )
+★✔️ **g.add** [file_path | directory_path] ( Tab completion enabled )
 
 ❌ instead of *git add*
 
 alias for the git add
 
-✔️ **g.co** [message]
+★✔️ **g.co** [message]
 
 ❌ instead of *git commit -m* message
 
-✔️ **g.amend.changes**
+★✔️ **g.amend.changes**
 
 ❌ instead of *git commit --amend --no-edit*
 
 this command has the same effects that git commit –amend –no-edit meaning it will append your staged changes to the HEAD commit of your branch without needing to commit or adding a message
 
-✔️ **g.amend.message** [commit_message]
+★✔️ **g.amend.message** [commit_message]
 
 ❌ instead of *git commit --amend --cleanup=whitespace*
 
 helps update the message of a commit
 
-✔️ **g.fetch**
+★✔️ **g.fetch**
 
 ❌ instead of *git fetch origin*
 
 will fetch from $G_GIT_REMOTE_NAME (default: origin)
 
-✔️ **g.diff** [optional: file_path] ( Tab completion enabled )
+★✔️ **g.diff** [optional: file_path] ( Tab completion enabled )
 
 ❌ instead of *git diff --patience*
 
 ## Git pull and push
 
-✔️ **g.pull** [optional: branch_name] ( Tab completion enabled )
+★✔️ **g.pull** [optional: branch_name] ( Tab completion enabled )
 
 ❌ instead of *git fetch origin*
 
@@ -76,13 +84,13 @@ pull from the remote branch (at $G_GIT_REMOTE_NAME) received as parameter, but i
 
 **NOTE:** g.pull uses *git pull --rebase*, is you want just to use *git pull* use g.pull.raw
 
-✔️ **g.push**
+★✔️ **g.push**
 
 ❌ instead of *git push origin your_branch*
 
 changes committed to the current branch are uploaded to your configured remote ($G_GIT_REMOTE_NAME). The local branch name is used as the new origin branch
 
-✔️ **g.push.force**
+★✔️ **g.push.force**
 
 ❌ instead of *git push --force origin your_branch*
 
@@ -140,7 +148,7 @@ revert changes made on any kind of file: tracked, untracked and merge conflicts.
 
 ## Git cherry-pick
 
-✔️ **g.cherry-pick** [commit_num]
+★✔️ **g.cherry-pick** [commit_num]
 
 ❌ git cherry-pick commit_nul
 
@@ -152,13 +160,13 @@ cherry-pick a commit to the current branch
 
 g.cherry-pick a range of commits to the current branch
 
-✔️ **g.cherry-pick.abort**
+★✔️ **g.cherry-pick.abort**
 
 ❌ instead of *git cherry-pick --abort*
 
 abort the current cherry-pick operation
 
-✔️ **g.cherry-pick.continue**
+★✔️ **g.cherry-pick.continue**
 
 ❌ instead of *git cherry-pick --continue*
 
@@ -166,25 +174,25 @@ go ahead and continue with the current cherry-pick operation
 
 ## Git branch
 
-✔️ **g.branch**
+★✔️ **g.branch**
 
 ❌ instead of *git branch*
 
 list the current branches of the repository
 
-✔️ **g.branch.rename** [new_branch_name] ( Tab completion enabled )
+★✔️ **g.branch.rename** [new_branch_name] ( Tab completion enabled )
 
 ❌ instead of *git branch -m new_name*
 
 If you need to rename a branch
 
-✔️ **g.branch.delete** ( Tab completion enabled )
+★✔️ **g.branch.delete** ( Tab completion enabled )
 
 ❌ instead of *git branch -D branch_name*
 
 deletes the branches given as parameter
 
-✔️ **g.branch.prune**
+★✔️ **g.branch.prune**
 
 ❌ instead of *git branch -D branch_name*
 
@@ -192,13 +200,13 @@ run this command when you want to clean up your workspace of old branches. this 
 
 ## Git stash
 
-✔️ **g.stash** [optioanl: stash_name]
+★✔️ **g.stash** [optioanl: stash_name]
 
 ❌ instead of *git stash*
 
 save the current changes of the branch in the stash
 
-✔️ **g.stash.pop**
+★✔️ **g.stash.pop**
 
 ❌ instead of *git stash pop*
 
@@ -210,7 +218,7 @@ recover the last saved state from the stash
 
 delete the last saved state from the stash
 
-✔️ **g.stash.apply**
+★✔️ **g.stash.apply**
 
 ❌ instead of *git stash apply*
 
@@ -234,7 +242,7 @@ this will include unstracked files in the stash being done
 
 ## Git rebase
 
-✔️ **g.rebase.abort**
+★✔️ **g.rebase.abort**
 
 ❌ instead of *git rebase --abort*
 
@@ -244,6 +252,10 @@ this will include unstracked files in the stash being done
 
 ## Git reset
 
+★✔️ **g.reset** 
+
+❌ instead of *git reset*
+
 ✔️ **g.reset.soft** 
 
 ❌ instead of *git reset --soft*
@@ -252,11 +264,13 @@ this will include unstracked files in the stash being done
 
 ❌ instead of *git reset --hard*
 
-✔️ **g.reset.remote** [optional: remote_branch_name]
+★✔️ **g.reset.remote** [optional: remote_branch_name]
 
 ❌ instead of *git reset --hard $G_GIT_REMOTE_NAME/$branch*
 
-this command will take the branch supplied as parameter or the current workspace branch name as reference to reset the actual branch equal to the remote branch. ⚠️*you may lose your local changes so stash them first*⚠️
+`remote_branch_name` default to your current branch name
+
+this command will take the supplied branch name or the current workspace one as reference to reset the actual branch equal to the remote branch. ⚠️*you may lose your local changes so stash them first*⚠️
 
 ## Search utilities
 
@@ -283,6 +297,28 @@ this command will print the matching lines for the term entered as parameter (ca
 ❌ instead of *git grep -n -i lookup_term -- file_extension*
 
 this command will print the matching lines for the term entered as parameter (case insensisitve) and optionally narrowing the search to certain file extension
+
+## Miscellaneous utilities
+
+★✔️ **g.default.go** [optioal: folder_path]
+
+`folder_path` default to the current path
+
+in many case when doing app development, we will have to remaing a good amount of time, days o even always using the repository. This implies that every new console I open I have to navigate to my working directory, but what if could set up a default directory so every time I open a new terminal I will land there automagically? this command will do exactly that
+
+to use it just navigate to the desired default path and run it there or supply your desired folder path
+
+✔️ **ll**
+
+❌ instead of *ls -l*
+
+★✔️ **la**
+
+❌ instead of *ls -al*
+
+✔️ **g.run_command_n_times** [cmd] [n]
+
+this will run the command you specify in `cmd` and will run it by `n` times
 
 ## Task
 
