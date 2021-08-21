@@ -246,7 +246,7 @@ this will include unstracked files in the stash being done
 
 ❌ instead of *git rebase --abort*
 
-✔️ **g.rebase.continue**
+★✔️ **g.rebase.continue**
 
 ❌ instead of *git rebase --continue*
 
