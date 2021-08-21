@@ -1,6 +1,7 @@
 ## RELEASE NOTES
 
 #### Version 1.2.1
+ * added usage documentations for commands
  * improve installation documentation
 
 #### Version 1.2.0
