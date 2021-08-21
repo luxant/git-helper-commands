@@ -42,14 +42,14 @@ function g_run_command_n_times {
 
 			g_display_help
 
-			return 0
+			return 1
 		fi
 	else
 		_printInColor "Error: You must input the arguments" red
 
 		g_display_help
 
-		return 0
+		return 1
 	fi
 
 	echo
