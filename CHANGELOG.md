@@ -1,5 +1,8 @@
 ## RELEASE NOTES
 
+#### Version 1.2.1
+ * improve installation documentation
+
 #### Version 1.2.0
  * g.branch.prune improved
 
