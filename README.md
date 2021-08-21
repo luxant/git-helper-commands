@@ -4,7 +4,26 @@ This looks for speeding and summarizing commond task when working with git
 
 ## Installing
 
-make sure that the helper-commands.sh file gets executed, one good place to call it is in your bash profile
+1. Open bash terminal
+1. Clone the git helpers commands 
+
+```
+git clone https://github.com/luxant/git-helper-commands.git
+```
+
+3. Change your working directorty to the newly created folder `git-helper-commands`
+
+```
+cd git-helper-commands
+```
+
+4. Run the `installer.sh`
+
+```
+source installer.sh
+```
+
+5. Now you should have the tool up and running. if you got a any git repo and do `g.st` you should your `git status` results
 
 ## Release notes
 
