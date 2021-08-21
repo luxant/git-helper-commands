@@ -5,7 +5,7 @@
 # G_DEBUG=1
 
 # variables
-G_HELPERS_VERSION='1.2.0'
+G_HELPERS_VERSION='1.2.1'
 
 # console entry point
 G_HELPERS_ENTRY_SCRIPT="$HOME/.bash_profile"
