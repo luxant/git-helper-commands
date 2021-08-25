@@ -23,7 +23,7 @@ cd git-helper-commands
 source installer.sh
 ```
 
-5. Now you should have the tool up and running. if you got a any git repo and do `g.st` you should your `git status` results
+5. Now you should have the tool up and running. if you got a any git repo and do `g.st` you should get same results as `git status`
 
 ## Documentation
 
