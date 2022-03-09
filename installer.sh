@@ -18,17 +18,17 @@ function g_create_working_folders() {
 
 function g_installing_helper_commands_loading() {
 
-	local source_path="$(dirname -- ${BASH_ARGV[0]})/helper-commands.sh"
+	local entrypoint_path="$(_g_get_called_script_dir)/helper-commands.sh"
 
 	# load extending commands
-	if [[ -z $(grep "^ *source \+$source_path" "$G_HELPERS_ENTRY_SCRIPT") ]] # Note: \+ means match spaces for grep
+	if [[ -z $(grep "^ *source \+$entrypoint_path" "$G_HELPERS_ENTRY_SCRIPT") ]] # Note: \+ means match spaces for grep
 	then
 		_printInColor "Installing commands..."
 
 		# write the commands loading to the .bash_profile script
 		echo "" >> "$G_HELPERS_ENTRY_SCRIPT"
 		echo "# load helper commands" >> "$G_HELPERS_ENTRY_SCRIPT"
-		echo "source $source_path" >> "$G_HELPERS_ENTRY_SCRIPT"
+		echo "source $entrypoint_path" >> "$G_HELPERS_ENTRY_SCRIPT"
 
 		_printInColor "Finished installation\n"
 
@@ -37,7 +37,7 @@ function g_installing_helper_commands_loading() {
 
 		_printInColor "Loading commands..."
 
-		source "$source_path"
+		source "$entrypoint_path"
 
 		_printInColor "Finished loading commands\n"
 
