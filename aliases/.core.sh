@@ -66,8 +66,13 @@ function _g_debug_print_in_color() {
 	echo -e "${G_RESET_ALL}${COLOR}$1${G_RESET_ALL}";
 };
 
-function _get_current_script_dir(){
-	echo ${BASH_ARGV[0]%/*}
+function _g_get_called_script_dir(){
+	# figure out if the installer was called from within the repo of git-helper-commands or
+	# outside of it. This will determine if value of ${BASH_ARGV[0]} will be either a full
+	# path (e.g. /path/to/repo/ when outside) or relative (. when within). That's why we
+	# use realpath here and strip the file name after with dirname
+
+	echo $(dirname $(realpath ${BASH_ARGV[0]}))
 }
 
 function _is_program_installed() {
