@@ -6,6 +6,15 @@ alias g.st='git status'
 alias g.st.untracked='git status -u'
 alias g.lg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative --date-order'
 alias g.ck='git checkout '
+alias g.ck.file='function g_ck_file() {
+	local branch=$(g_get_default_branch)
+
+	if [[ ! -z $1 ]]; then
+		branch=$1
+	fi
+
+	git checkout origin/$branch -- $2
+}; g_ck_file '
 alias g.add='git add '
 alias g.co='_commit '
 alias g.co.anyway='function _commit_anyway(){
