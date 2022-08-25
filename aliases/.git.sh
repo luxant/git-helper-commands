@@ -65,6 +65,7 @@ alias g.cherry-pick.abort='git cherry-pick --abort'
 alias g.cherry-pick.continue='git cherry-pick --continue '
 
 alias g.branch='git branch '
+alias g.branch.create='git branch  '
 alias g.branch.delete='git branch -D '
 alias g.branch.rename='git branch -m '
 alias g.branch.prune='_g_branch_prune '
