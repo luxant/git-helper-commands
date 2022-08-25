@@ -50,7 +50,7 @@ alias for the git add
 
 this command has the same effects that git commit –amend –no-edit meaning it will append your staged changes to the HEAD commit of your branch without needing to commit or adding a message
 
-★✔️ **g.amend.message** [commit_message]
+★✔️ **g.amend.message**
 
 ❌ instead of *git commit --amend --cleanup=whitespace*
 
