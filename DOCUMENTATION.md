@@ -180,6 +180,12 @@ go ahead and continue with the current cherry-pick operation
 
 list the current branches of the repository
 
+✔️ **g.branch.create** [new_branch_name]
+
+❌ Instead of *git branch new_name*
+
+If you need to create a new branch without moving from the actual one
+
 ★✔️ **g.branch.rename** [new_branch_name] ( Tab completion enabled )
 
 ❌ instead of *git branch -m new_name*
