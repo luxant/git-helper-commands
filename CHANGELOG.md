@@ -1,5 +1,8 @@
 ## RELEASE NOTES
 
+#### Version 1.2.2
+ * added g.reset.commit command
+
 #### Version 1.2.1
  * added usage documentations for commands
  * improve installation documentation

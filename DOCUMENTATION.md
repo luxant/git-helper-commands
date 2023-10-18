@@ -270,6 +270,10 @@ this will include unstracked files in the stash being done
 
 ❌ instead of *git reset --hard*
 
+✔️ **g.reset.commit**
+
+❌ instead of *git reset --soft HEAD~1*
+
 ★✔️ **g.reset.remote** [optional: remote_branch_name]
 
 ❌ instead of *git reset --hard $G_GIT_REMOTE_NAME/$branch*

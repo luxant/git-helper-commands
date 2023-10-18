@@ -102,6 +102,7 @@ alias g.rebase.continue='git rebase --continue'
 alias g.reset='git reset '
 alias g.reset.soft='git reset --soft '
 alias g.reset.hard='git reset --hard '
+alias g.reset.commit='git reset --soft HEAD~1'
 alias g.reset.remote='function _reset_remote(){
 
 	local branch=$(g_get_default_branch $1)
