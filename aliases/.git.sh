@@ -15,6 +15,20 @@ alias g.ck.file='function g_ck_file() {
 
 	git checkout origin/$branch -- $2
 }; g_ck_file '
+alias g.ck.remote='function g_ck_remote() {
+	_printInColor "fetching latest changes" cyan
+	git fetch
+
+	local branch=master
+
+	if [[ ! -z $2 ]]; then
+		branch=$2
+	fi
+
+	_printInColor "Checking out $1 from origin/$branch"  cyan
+
+	git checkout -b $1 origin/$branch
+}; g_ck_remote '
 alias g.add='git add '
 alias g.co='_commit '
 alias g.co.anyway='function _commit_anyway(){
