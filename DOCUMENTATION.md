@@ -34,6 +34,12 @@ show the log of the repository
 
 alias for the git checkout
 
+★✔️ **g.ck.remote** [branch_name] [optional: remote_branch]
+
+❌ instead of *git checkout -b brach_name origin/remote_branch*
+
+alias for fetching and then checking out a remote branch taking master as default brach
+
 ★✔️ **g.add** [file_path | directory_path] ( Tab completion enabled )
 
 ❌ instead of *git add*
