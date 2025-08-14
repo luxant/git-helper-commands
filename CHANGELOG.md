@@ -2,6 +2,7 @@
 
 #### Version 1.2.2
  * added g.reset.commit command
+ * added g.ck.remote command
 
 #### Version 1.2.1
  * added usage documentations for commands
