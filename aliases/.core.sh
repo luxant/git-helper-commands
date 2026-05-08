@@ -83,7 +83,7 @@ function _is_program_installed() {
 }
 
 function _g_get_latest_version() {
-	local regex='{[[[:space:]]+"name":[[[:space:]]+"master",[[[:space:]]+"commit":[[[:space:]]+{[[[:space:]]+"sha":[[[:space:]]+"([0-9 a-z A-Z]+)';
+	local regex='\{[[:space:]]+"name":[[:space:]]+"master",[[:space:]]+"commit":[[:space:]]+\{[[:space:]]+"sha":[[:space:]]+"([0-9a-zA-Z]+)';
 
 	# get master branch current commit for the git-helper-commands repo
 	local result=$(curl -s --location --request GET 'https://api.github.com/repos/luxant/git-helper-commands/branches/master')
